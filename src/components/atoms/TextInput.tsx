@@ -1,12 +1,21 @@
 import React from "react";
-import styled from "../../styles/atoms/form.module.scss";
+import styles from "../../styles/atoms/form.module.scss";
 
-const TextInput: React.FC = () => {
+interface Props {
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  value: string | number;
+  type: string;
+}
+
+const TextInput: React.FC<Props> = React.memo(({ onChange, value, type }) => {
   return (
-    <div>
-      <h2></h2>
-    </div>
+    <input
+      className={styles.form__text}
+      onChange={(e) => onChange(e)}
+      value={value}
+      type={type}
+    />
   );
-};
+});
 
 export default TextInput;
